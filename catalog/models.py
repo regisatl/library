@@ -4,6 +4,9 @@ from django.db import models
 class Author(models.Model):
     name = models.CharField(max_length=255, help_text="Enter the author name")
     biography = models.TextField(help_text="Enter the author biography")
+    image = models.ImageField(
+        upload_to="authors/", blank=True, help_text="Upload the author image"
+    )
 
     def __str__(self):
         return self.name
