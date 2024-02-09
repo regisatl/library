@@ -3,6 +3,13 @@ from .models import Book, Author, Category
 from .forms import BookForm, AuthorForm, CategoryForm
 
 
+def index(request):
+    books = Book.objects.filter(
+        is_available=True
+    )  # Récupère tous les livres disponibles
+    return render(request, "index.html", {"books": books})
+
+
 # Vue pour créer un nouveau livre
 def create_book(request):
     if request.method == "POST":
