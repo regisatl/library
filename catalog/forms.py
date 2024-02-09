@@ -1,5 +1,17 @@
 from django import forms
-from .models import Book, Author, Category
+from .models import Author, Category, Book
+
+
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = ["name", "biography", "image"]
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ["description"]
 
 
 class BookForm(forms.ModelForm):
@@ -14,15 +26,3 @@ class BookForm(forms.ModelForm):
             "publish_date",
             "statut",
         ]
-
-
-class AuthorForm(forms.ModelForm):
-    class Meta:
-        model = Author
-        fields = ["name", "biography"]
-
-
-class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = ["description"]
