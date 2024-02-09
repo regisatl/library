@@ -1,14 +1,35 @@
 from django.db import models
 
-# Create your models here.
 
-class Book(models.Model):
-    title = models.CharField(max_length=255, help_text='Enter the title')
-    author = models.CharField(max_length=255, help_text='Enter the author name')
-    summary = models.TextField(help_text='Enter a brief description of the book')
-    cover = models.ImageField(upload_to='covers/', blank=True)
-    price = models.DecimalField(max_digits=5, decimal_places=2, help_text='Enter the price of the book')
-    publish_date = models.DateField(null=True, blank=True)
+class Author(models.Model):
+    name = models.CharField(max_length=255, help_text="Enter the author name")
+    biography = models.TextField(help_text="Enter the author biography")
 
     def __str__(self):
-      return self.title
+        return self.name
+
+
+class Category(models.Model):
+    description = models.CharField(
+        max_length=255, help_text="Enter the category description"
+    )
+
+    def __str__(self):
+        return self.description
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=255, help_text="Enter the title")
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="books")
+    categories = models.ManyToManyField(Category, related_name="books")
+    cover = models.ImageField(
+        upload_to="covers/", blank=True, help_text="Upload the cover image"
+    )
+    summary = models.TextField(help_text="Enter a brief description of the book")
+    publish_date = models.DateField(
+        null=True, blank=True, help_text="Enter the publish date"
+    )
+    statut = models.BooleanField(default=True, help_text="Availability status")
+
+    def __str__(self):
+        return self.title
