@@ -19,7 +19,10 @@
 
 
     <div class="max-w-md mx-auto my-8">
-      <h1 class="text-2xl font-bold mb-4 text-slate-800 uppercase">Liste des livres</h1>
+      <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold mb-4 text-gray-500 text-center uppercase">Listes des livres</h1>
+            <a href="{% url 'catalog:add' %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Add book</a>
+      </div>
       {% for book in books %}
       <div class="max-w-md mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-8">
             <a href="{% url 'catalog:show' book.id %}">
