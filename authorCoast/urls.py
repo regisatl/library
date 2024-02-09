@@ -7,10 +7,10 @@ app_name = "authorCoast"
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:authorCoast_id>/', views.show, name='show'),
+    path('<int:author_id>/', views.show, name='show'),
     path('add/', views.add, name='add'),
-    path('edit/<int:authorCoast_id>/', views.edit, name='edit'),
-    path('remove/<int:authorCoast_id>/', views.remove, name='remove'),
+    path('edit/<int:author_id>/', views.edit, name='edit'),
+    path('remove/<int:author_id>/', views.remove, name='remove'),
 ]
 
 if settings.DEBUG:

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Author
+from catalog.models import Author
 
 
 class AuthorForm(forms.ModelForm):
