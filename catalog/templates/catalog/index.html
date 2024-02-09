@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Liste des livres</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="font-sans antialiased">
-
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'src/input.css' %}" />
+  </head>
+  <body class="font-sans antialiased bg-gray-100">
     <div class="container mx-auto my-8">
-        <h1 class="text-3xl font-bold mb-6">Liste des livres</h1>
-
-        {% for book in books %}
-            <h2 class="text-xl font-semibold mb-3">
-                <a href="{% url 'show' book.id %}" class="text-blue-500 hover:underline">{{ book.title }}</a>
-            </h2>
-        {% endfor %}
+      <h1 class="text-2xl font-bold mb-4 text-slate-800 uppercase">Liste des livres</h1>
+      {% for book in books %}
+        <div class="mb-4 p-4 border rounded-md shadow-lg">
+          <h2 class="text-md font-semibold text-slate-800 uppercase">{{ book.title }}</h2>
+          <p class="mt-2">{{ book.summary }}</p>
+          <p class="mt-2">{{ book.auhor.name }}</p>
+          <a href="{% url 'catalog:show' book.id %}" class="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded">See More</a>
+        </div>
+      {% endfor %}
     </div>
-
-</body>
+  </body>
 </html>
