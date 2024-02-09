@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des livres</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-sans antialiased">
+
+    <div class="container mx-auto my-8">
+        <h1 class="text-3xl font-bold mb-6">Liste des livres</h1>
+
+        {% for book in books %}
+            <h2 class="text-xl font-semibold mb-3">
+                <a href="{% url 'show' book.id %}" class="text-blue-500 hover:underline">{{ book.title }}</a>
+            </h2>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
