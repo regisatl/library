@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Book, Author, Category
-from .forms import BookForm, AuthorForm, CategoryForm
+from .models import Book
+from .forms import BookForm
 
 
 # Vue pour l'index
@@ -11,9 +11,7 @@ def index(request):
 
 # Vue pour afficher un livre spécifique
 def show(request, book_id):
-    book = get_object_or_404(
-        Book, pk=book_id
-    )  # Récupère le livre ou renvoie une erreur 404 si non trouvé
+    book = get_object_or_404(Book, pk=book_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     return render(request, "catalog/show.html", {"book": book})
 
 
@@ -31,9 +29,7 @@ def add(request):
 
 # Vue pour modifier un livre existant
 def edit(request, book_id):
-    book = get_object_or_404(
-        Book, pk=book_id
-    )  # Récupère le livre ou renvoie une erreur 404 si non trouvé
+    book = get_object_or_404(Book, pk=book_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES, instance=book)
         if form.is_valid():
@@ -46,10 +42,8 @@ def edit(request, book_id):
 
 # Vue pour supprimer un livre existant
 def remove(request, book_id):
-    book = get_object_or_404(
-        Book, pk=book_id
-    )  # Récupère le livre ou renvoie une erreur 404 si non trouvé
+    book = get_object_or_404(Book, pk=book_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
         book.delete()
-        return redirect("index")
+        return redirect(":catalog:index")
     return render(request, "catalog/remove.html", {"book": book})
