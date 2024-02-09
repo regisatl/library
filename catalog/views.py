@@ -5,7 +5,7 @@ from .forms import BookForm
 
 # Vue pour l'index
 def index(request):
-    books = Book.objects.filter(statut=True)  # Récupère tous les livres disponibles
+    books = Book.objects.all()  # Récupère tous les livres disponibles
     return render(request, "catalog/index.html", {"books": books})
 
 
@@ -45,5 +45,5 @@ def remove(request, book_id):
     book = get_object_or_404(Book, pk=book_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
         book.delete()
-        return redirect(":catalog:index")
+        return redirect("catalog:index")
     return render(request, "catalog/remove.html", {"book": book})
