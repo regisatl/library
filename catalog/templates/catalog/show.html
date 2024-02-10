@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Détails des livres</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+{% extends 'catalog/base.html' %}
 
-    <style>
-      body {
-        font-family: Poppins;
-      }
-    </style>
-  </head>
-  <body class="flex justify-center items-center min-h-screen mx-auto bg-gray-100">
-    <div class="my-3">
+{% block title %}
+Détails sur un livre
+{% endblock %}
+
+{% block content %}
+    <div class="flex justify-center items-center min-h-screen mx-auto my-3">
       <h1 class="text-2xl font-bold mb-4 text-gray-500 text-center uppercase">Détails sur le livre</h1>
       <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
         <div class="flex flex-col justify-between p-4 leading-normal">
@@ -47,5 +36,4 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+    {% endblock %}

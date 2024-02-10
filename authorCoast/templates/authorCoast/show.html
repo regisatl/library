@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Détails des auteurs</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+{% extends 'authorCoast/base.html' %}
 
-    <style>
-      body {
-        font-family: Poppins;
-      }
-    </style>
-  </head>
-  <body class="flex justify-center items-center min-h-screen mx-auto bg-gray-100">
-    <div class="my-3">
-      <h1 class="text-2xl font-bold mb-4 text-gray-500 text-center uppercase">Détails sur l'auteur</h1>
-      <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-          <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="underline text-gray-500">Nom et Prénoms</span> : {{ author.name }}</h5>
-          <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="underline text-gray-500">Biographie</span> : {{ author.biography }}</h5>
-          
-          <div class="flex gap-3">
-            <a href="{% url 'authorCoast:edit' author.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Modifier</a>
-            <a href="{% url 'authorCoast:remove' author.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Supprimer</a>
-          </div>
+{% block title %}
+Détails sur un auteur
+{% endblock %}
+
+{% block content %}
+  <div class="flex justify-center items-center min-h-screen mx-auto my-3">
+    <h1 class="text-2xl font-bold mb-4 text-gray-500 text-center uppercase">Détails sur l'auteur</h1>
+    <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+      <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="underline text-gray-500">Nom et Prénoms</span> : {{ author.name }}</h5>
+        <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="underline text-gray-500">Biographie</span> : {{ author.biography }}</h5>
+
+        <div class="flex gap-3">
+          <a href="{% url 'authorCoast:edit' author.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Modifier</a>
+          <a href="{% url 'authorCoast:remove' author.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Supprimer</a>
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+{% endblock %}
