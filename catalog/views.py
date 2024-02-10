@@ -5,7 +5,7 @@ from .forms import BookForm
 
 # Vue pour l'index
 def index(request):
-    books = Book.objects.all()  # Récupère tous les livres disponibles
+    books = Book.objects.all().order_by('-publish_date')  # Récupère tous les livres disponibles
     return render(request, "catalog/index.html", {"books": books})
 
 
