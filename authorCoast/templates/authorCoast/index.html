@@ -11,13 +11,13 @@
       <svg class="w-6 h-6 text-gray-100 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
         <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm11-4.2a1 1 0 1 0-2 0V11H7.8a1 1 0 1 0 0 2H11v3.2a1 1 0 1 0 2 0V13h3.2a1 1 0 1 0 0-2H13V7.8Z" clip-rule="evenodd" />
       </svg>
-      <span class="hidden md:block">Ajouterr</span>
+      <span class="hidden md:block">Ajouter</span>
     </a>
   </div>
-  <div class="grid sm:grid-cols-2 md:grid-cols-2 px-4 gap-4">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 px-4 gap-4">
     {% for author in authors %}
       <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-8">
-        <a href="{% url 'authorCoast:show' author.id %}"><img class="object-cover rounded-t-lg w-fit" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXV0ZXVyfGVufDB8fDB8fHww" alt="{{ author.name }} cover" /></a>
+        <a href="{% url 'authorCoast:show' author.id %}"><img class="object-cover rounded-t-lg w-fit" src="{{ author.image.url }}" alt="{{ author.name }} cover" /></a>
         <div class="p-5">
           <a href="{% url 'authorCoast:show' author.id %}"><h5 class="mb-2 text-lg tracking-tight text-gray-900 dark:text-white hover:underline"><span class="underline font-medium">Auteur</span> :<span class="text-lg text-gray-500"> {{ author.name }}</span></h5></a>
           <a href="{% url 'authorCoast:show' author.id %}" class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-blue-800 text-sm">

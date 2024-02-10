@@ -5,7 +5,7 @@ Détails sur un livre
 {% endblock %}
 
 {% block content %}
-    <div class="flex flex-col justify-center items-center min-h-screen mx-auto my-3 rounded-lg">
+    <div class="flex flex-col justify-center items-center  mx-auto my-3 py-8 rounded-lg">
       <div class="flex flex-col items-center md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 shadow-lg border border-gray-200 rounded-lg bg-white">
         <div class="flex flex-col justify-between p-4 leading-normal">
           <h1 class="text-lg font-bold mb-4 text-gray-100 text-center uppercase bg-indigo-500 w-fit rounded-t-lg p-4">Détails sur le livre</h1>
@@ -13,7 +13,7 @@ Détails sur un livre
           <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="underline text-gray-500">Auteur</span> : {{ book.author.name }}</h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ book.summary }}</p>
           <p class="mb-3 text-gray-700 dark:text-gray-400">
-            <span class="font-normalunderline">Catégories</span> :
+            <span class="font-normal underline">Catégories</span> :
             {% for category in book.categories.all %}
               <span class="bg-indigo-500 text-white px-2 py-1 rounded-lg shadow-lg text-sm font-light">{{ category.description }}</span>
               {% if not forloop.last %}, {% endif %}
