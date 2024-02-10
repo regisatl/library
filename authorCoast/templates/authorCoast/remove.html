@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Détails des livres</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+{% extends 'authorCoast/base.html' %}
 
-    <style>
-      body {
-        font-family: Poppins;
-      }
-    </style>
+{% block title %}
+Supprimer un auteur
+{% endblock %}
 
-  </head>
+{% block content %}
   <body class="flex justify-center items-center min-h-screen mx-auto bg-gray-100">
         <div class="my-3 shadow-lg p-8 rounded-lg bg-white text-center border-2 border-gray-200">
-          <h1 class="text-2xl font-bold mb-4 text-gray-500 uppercase">Suppression du livre</h1>
-          <h1 class="text-2xl font-bold mb-4 text-gray-700">Supprimer le livre : {{ book.title }}</h1>
-          <p class="text-gray-700">Êtes-vous sûr de vouloir supprimer ce livre ?</p>
+          <h1 class="text-2xl font-bold mb-4 text-gray-500 uppercase">Suppression d'un auteur</h1>
+          <h1 class="text-2xl font-bold mb-4 text-gray-700">Supprimer l'auteur : {{ author.name }}</h1>
+          <p class="text-gray-700">Êtes-vous sûr de vouloir supprimer cet auteur ?</p>
           <div class="flex justify-center">
                 <form method="POST" class="space-y-4">
                   {% csrf_token %}

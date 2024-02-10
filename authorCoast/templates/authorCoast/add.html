@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ajouter un auteur</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+{% extends 'authorCoast/base.html' %}
 
-    <style>
-      body {
-        font-family: Poppins;
-      }
-    </style>
+{% block title %}
+  Ajouter un auteur
+{% endblock %}
 
-  </head>
-  <body class="flex justify-center items-center min-h-screen mx-auto bg-gray-100">
-        <div class="my-3 shadow-lg p-8 rounded-lg bg-white text-center border-2 border-gray-200">
-            <h1 class="text-2xl font-bold mb-4 text-gray-500 uppercase">Ajouter un auteur</h1>
-            <form method="POST" enctype="multipart/form-data" class="space-y-4">
-                  {% csrf_token %}
-                  {{ form.as_div }}
-                  <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Ajouter un auteur</button>
-                </form>
-    </div>
-  </body>
-</html>
+{% block content %}
+  <div class="flex justify-center items-center min-h-screen mx-auto my-3 shadow-lg p-8 rounded-lg bg-white text-center border-2 border-gray-200">
+    <h1 class="text-2xl font-bold mb-4 text-gray-500 uppercase">Ajouter</h1>
+    <form method="POST" enctype="multipart/form-data" class="space-y-4">
+      {% csrf_token %}
+      {{ form.as_div }}
+      <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Ajouter</button>
+    </form>
+  </div>
+{% endblock %}
