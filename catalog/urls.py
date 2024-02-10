@@ -6,7 +6,7 @@ from django.conf import settings
 app_name = "catalog"
 
 urlpatterns = [
-    path('', views.index, name='index', name='index'),
+    path('', views.index, name='index'),
     path('<int:book_id>/', views.show, name='show'),
     path('add/', views.add, name='add'),
     path('edit/<int:book_id>/', views.edit, name='edit'),

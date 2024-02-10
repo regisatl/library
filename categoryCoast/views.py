@@ -5,17 +5,17 @@ from .forms import CategoryForm
 
 # Vue pour l'index
 def index(request):
-    categories = Category.objects.all()  # Récupère tous les livres disponibles
+    categories = Category.objects.all()  # Récupère tous les catégories disponibles
     return render(request, "categoryCoast/index.html", {"categories": categories})
 
 
-# Vue pour afficher un livre spécifique
+# Vue pour afficher une catégorie spécifique
 def show(request, category_id):
     category = get_object_or_404(Category, pk=category_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     return render(request, "categoryCoast/show.html", {"category": category})
 
 
-# Vue pour ajouter un nouveau livre
+# Vue pour ajouter une nouvelle catégorie
 def add(request):
     if request.method == "POST":
         form = CategoryForm(request.POST, request.FILES)
@@ -27,7 +27,7 @@ def add(request):
     return render(request, "categoryCoast/add.html", {"form": form})
 
 
-# Vue pour modifier un livre existant
+# Vue pour modifier une catégorie existant
 def edit(request, category_id):
     category = get_object_or_404(Category, pk=category_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
@@ -39,7 +39,7 @@ def edit(request, category_id):
         form = CategoryForm(instance=category)
     return render(request, "categoryCoast/edit.html", {"form": form})
 
-# Vue pour supprimer un livre existant
+# Vue pour supprimer une catégorie existant
 def remove(request, category_id):
     category = get_object_or_404(Category, pk=category_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
