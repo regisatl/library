@@ -3,14 +3,14 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
-app_name = "catalog"
+app_name = "categoryCoast"
 
 urlpatterns = [
     path('', views.index, name='index', name='index'),
-    path('<int:book_id>/', views.show, name='show'),
+    path('<int:category_id>/', views.show, name='show'),
     path('add/', views.add, name='add'),
-    path('edit/<int:book_id>/', views.edit, name='edit'),
-    path('remove/<int:book_id>/', views.remove, name='remove'),
+    path('edit/<int:category_id>/', views.edit, name='edit'),
+    path('remove/<int:category_id>/', views.remove, name='remove'),
 ]
 
 if settings.DEBUG:

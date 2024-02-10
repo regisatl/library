@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'authorCoast.apps.AuthorcoastConfig',
+    'categoryCoast.apps.CategorycoastConfig',
 ]
 
 MIDDLEWARE = [
