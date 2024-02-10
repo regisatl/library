@@ -8,7 +8,7 @@ Modifier un livre
   <div class="flex flex-col justify-center items-center min-h-screen mx-auto my-3">
     <div class="">
       <h1 class="text-lg font-bold mb-4 text-gray-100 text-center uppercase bg-green-500 p-4 rounded-t-lg w-full">Modifier les informations de ce livre : {{ book.title }}</h1>
-      <form method="POST" enctype="multipart/form-data" class="grid cols-1 lg:grid-cols-2  space-y-4">
+      <form method="POST" enctype="multipart/form-data" class="grid grid-cols-1 space-y-4">
         {% csrf_token %}
         {{ form.as_div }}
         <button type="submit" class="inline-flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Modifier</button>

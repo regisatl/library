@@ -14,7 +14,7 @@
       <span class="hidden md:block">Ajouter</span>
     </a>
   </div>
-  <div class="grid sm:grid-cols-2 md:grid-cols-2 px-4 gap-4">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 px-4 gap-4">
     {% for book in books %}
       <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-8">
         <a href="{% url 'catalog:show' book.id %}"><img class="object-cover rounded-t-lg w-fit" src="https://images.unsplash.com/photo-1516414447565-b14be0adf13e?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="{{ book.title }} cover" /></a>
