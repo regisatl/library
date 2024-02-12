@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Book
 from .forms import BookForm
@@ -16,6 +17,7 @@ def show(request, book_id):
 
 
 # Vue pour ajouter un nouveau livre
+@permission_required('catalog.add_book', raise_exception= True) 
 def add(request):
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES)
@@ -28,6 +30,7 @@ def add(request):
 
 
 # Vue pour modifier un livre existant
+@permission_required('catalog.edit_book', raise_exception= True) 
 def edit(request, book_id):
     book = get_object_or_404(Book, pk=book_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
@@ -40,7 +43,8 @@ def edit(request, book_id):
     return render(request, "catalog/edit.html", {"form": form})
 
 
-# Vue pour supprimer un livre existant
+# Vue pour supprimer un livre 
+@permission_required('catalog.delete_book', raise_exception= True) 
 def remove(request, book_id):
     book = get_object_or_404(Book, pk=book_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
