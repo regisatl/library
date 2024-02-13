@@ -3,7 +3,7 @@
     <a href="{% url 'catalog:index' %}" class="flex items-center space-x-3 rtl:space-x-reverse"><span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Havre de Paix</span></a>
 
     {% if user.is_authenticated %}
-      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <div class="flex gap-2 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <button class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">{{ user.username }}</button>
         <a href="{% url 'accounts:logout' %}" class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Déconnexion</a>
         <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
@@ -14,7 +14,7 @@
         </button>
       </div>
     {% else %}
-      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <div class="flex gap-2 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <a href="{% url 'accounts:register' %}" class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">S'inscrire</a>
         <a href="{% url 'accounts:login' %}" class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Se connecter</a>
         <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
@@ -44,19 +44,3 @@
   </div>
 </nav>
 
-{% comment %}
-
-{% if perms.mangalib.delete_book %}
-  <p>Oui la permission est acceptée</p>
-{% endif %}
-
-{% if user.is_authenticated %}
-  <p>
-    Connecté sous {{ user.username }} | <a href="{% url 'accounts:logout' %}">Déconnexion</a>
-  </p>
-{% else %}
-  <p>
-    <a href="{% url 'accounts:login' %}">Connexion</a> | <a href="{% url 'accounts:register' %}">Inscription</a>
-  </p>
-{% endif %}
-{% endcomment %}
