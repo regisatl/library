@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'catalog.apps.CatalogConfig',
     'authorCoast.apps.AuthorcoastConfig',
     'categoryCoast.apps.CategorycoastConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
