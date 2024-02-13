@@ -27,7 +27,9 @@ def add(request):
             return redirect("catalog:index")
     else:
         form = BookForm()
-    return render(request, "catalog/add.html", {"form": form})
+        
+    books = Book.objects.all()
+    return render(request, "catalog/add.html", {"form": form, "books": books})
 
 
 # Vue pour modifier un livre existant

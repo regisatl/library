@@ -1,16 +1,27 @@
 {% extends 'catalog/base.html' %}
 
 {% block title %}
-Modifier un livre
+  Modifier un livre
 {% endblock %}
 
 {% block content %}
   <div class="flex flex-col justify-center items-center min-h-screen mx-auto my-3">
-    <div class="">
-      <h1 class="text-lg font-bold mb-4 text-gray-100 text-center uppercase bg-green-500 p-4 rounded-t-lg w-full">Modifier les informations de ce livre : {{ book.title }}</h1>
+    <div class="w-full  bg-gradient-to-r from-gray-300 rounded-lg shadow-xl border border-gray-300 dark:border md:mt-0 sm:max-w-md xl:p-5 dark:bg-gray-800 dark:border-gray-700">
+      <h1 class="text-lg font-bold mb-4 text-gray-100 text-center uppercase bg-green-500 p-4 rounded-t-lg w-full">Modifier ce livre : {{ book.title }}</h1>
       <form method="POST" enctype="multipart/form-data" class="grid grid-cols-1 space-y-4">
         {% csrf_token %}
-        {{ form.as_div }}
+        <div>
+          <label for="title" class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Titre</label>
+          <input type="text" id="title" name="title" value="{{ book.title }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"required="" />
+        </div>
+        <div>
+          <label for="author" class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Auteur</label>
+          <input type="text" id="author" name="author" value="{{ book.author.name }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"required="" />
+        </div>
+        <div>
+          <label for="summary" class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Résumé</label>
+          <textarea id="summary" name="summary" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" required="">{{ book.summary }}</textarea>
+        </div>
         <button type="submit" class="inline-flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Modifier</button>
       </form>
     </div>
