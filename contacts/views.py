@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 
 
-def contact(request):
+def index(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
