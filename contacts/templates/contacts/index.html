@@ -34,7 +34,7 @@
         <div class="group p-8">
           <div class="tracking-wide text-indigo-500">
             <span class="cursor-pointer font-medium group-hover:bg-gradient-to-r from-indigo-400">{{ contact.name }}</span>
-            <span class="text-sm text-gray-500">{{ contact.email }}</span>
+            <a href="mailto:{{contac.email}}" class="text-sm text-gray-500 hover:underline hover:text-indigo-500">{{ contact.email }}</a>
           </div>
           <p class="mt-2 text-gray-500">{{ contact.message }}</p>
         </div>
