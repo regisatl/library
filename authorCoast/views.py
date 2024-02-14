@@ -6,8 +6,9 @@ from .forms import AuthorForm
 
 # Vue pour l'index
 def index(request):
+    active_page = 'auteurs'
     authors = Author.objects.all()  # Récupère tous les livres disponibles
-    return render(request, "authorCoast/index.html", {"authors": authors})
+    return render(request, "authorCoast/index.html", {"authors": authors, 'active_page': active_page})
 
 
 # Vue pour afficher un livre spécifique
