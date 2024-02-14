@@ -37,7 +37,7 @@ def edit(request, author_id):
             return redirect("authorCoast:show", author_id=author.id)
     else:
         form = AuthorForm(instance=author)
-    return render(request, "authorCoast/edit.html", {"form": form})
+    return render(request, "authorCoast/edit.html", {"form": form, 'author': author})
 
 
 # Vue pour supprimer un livre existant
