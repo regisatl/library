@@ -6,8 +6,9 @@ from .forms import CategoryForm
 
 # Vue pour l'index
 def index(request):
+    active_page = "categories"
     categories = Category.objects.all()  # Récupère tous les catégories disponibles
-    return render(request, "categoryCoast/index.html", {"categories": categories})
+    return render(request, "categoryCoast/index.html", {"categories": categories, 'active_page': active_page})
 
 
 # Vue pour afficher une catégorie spécifique
