@@ -6,8 +6,9 @@ from .forms import BookForm
 
 # Vue pour l'index
 def index(request):
+    active_page = "home"
     books = Book.objects.all().order_by('-publish_date')  # Récupère tous les livres disponibles
-    return render(request, "catalog/index.html", {"books": books})
+    return render(request, "catalog/index.html", {"books": books, 'active_page': active_page})
 
 
 # Vue pour afficher un livre spécifique

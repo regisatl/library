@@ -21,10 +21,10 @@
   <body class="bg-gray-100">
     <header>
       {% comment %}contenu du header{% endcomment %}
-      {% include "catalog/header.html" %}
+      {% include 'catalog/header.html' %}
     </header>
     <main>
-      <div class="max-w-7xl mx-auto my-8">
+      <div class="max-w-7xl mx-auto px-5 lg:p-0 my-8">
         {% block content %}
           {% comment %}contenu du body{% endcomment %}
         {% endblock %}
@@ -34,5 +34,19 @@
       {% comment %}contenu du footer{% endcomment %}
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const currentPage = window.location.pathname.split('/')[1]
+        const navLinks = document.querySelectorAll('#navbar-user a')
+      
+        navLinks.forEach(function (link) {
+          if (link.id === 'nav-' + currentPage) {
+            link.classList.add('text-indigo-700')
+          } else {
+            link.classList.remove('text-indigo-700')
+          }
+        })
+      })
+    </script>
   </body>
 </html>
