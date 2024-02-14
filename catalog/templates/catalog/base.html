@@ -47,6 +47,23 @@
           }
         })
       })
+
+      function performSearch() {
+        let searchQuery = document.getElementById('search-query').value.toLowerCase()
+        let bookContainers = document.querySelectorAll('.book-container')
+      
+        bookContainers.forEach(function (container) {
+          let title = container.dataset.title.toLowerCase()
+          let author = container.dataset.author.toLowerCase()
+          let publishDate = container.dataset.publishDate.toLowerCase()
+      
+          if (title.includes(searchQuery) || author.includes(searchQuery) || publishDate.includes(searchQuery)) {
+            container.style.display = 'block'
+          } else {
+            container.style.display = 'none'
+          }
+        })
+      }
     </script>
   </body>
 </html>

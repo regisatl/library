@@ -14,3 +14,10 @@ class BookForm(forms.ModelForm):
             'publish_date': forms.DateInput(attrs={'class': 'block mb-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-white p-2 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 w-full', 'placeholder': 'Entrez la date de publication'}),
             'statut': forms.CheckboxInput(attrs={'class': 'block mb-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-white p-2 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 w-full'}),
         }
+        
+class BookSearchForm(forms.Form):
+    search_query = forms.CharField(
+        label = 'Recherche',
+        max_length=100,
+        required=False,
+    )

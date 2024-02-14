@@ -34,9 +34,9 @@
           <label for="{{ form.publish_date.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-300">Date de publication</label>
           {{ form.publish_date }}
         </div>
-        <div class="mb-4">
-          <label for="{{ form.statut.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-300">Statut</label>
-          {{ form.statut }}
+        <div class="flex items-center space-x-4 mb-4">
+          <label for="{{ form.statut.id_for_label }}" class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-300">Statut</label>
+          <span>{{ form.statut }}</span>
         </div>
         <button type="submit" class="inline-flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Ajouter</button>
       </form>
