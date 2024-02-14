@@ -64,6 +64,22 @@
 
   <script>
 
+    function performSearch() {
+      var query = document.getElementById('search-query').value.toLowerCase();
+      var books = document.querySelectorAll('.book-container');
+  
+      books.forEach(function(book) {
+        var title = book.getAttribute('data-title').toLowerCase();
+        var author = book.getAttribute('data-author').toLowerCase();
+        var publishDate = book.getAttribute('data-publishDate');
+  
+        if (title.includes(query) || author.includes(query) || publishDate.includes(query)) {
+          book.style.display = 'block';
+        } else {
+          book.style.display = 'none';
+        }
+      });
+    }
 
 </script>
 {% endblock %}
