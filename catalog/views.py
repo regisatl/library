@@ -43,7 +43,7 @@ def edit(request, book_id):
             return redirect("catalog:show", book_id=book.id)
     else:
         form = BookForm(instance=book)
-    return render(request, "catalog/edit.html", {"form": form})
+    return render(request, "catalog/edit.html", {"form": form, 'book': book})
 
 
 # Vue pour supprimer un livre 

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from catalog.models import Author
 from .forms import AuthorForm
@@ -10,12 +11,14 @@ def index(request):
 
 
 # Vue pour afficher un livre spécifique
+@login_required
 def show(request, author_id):
     author = get_object_or_404(Author, pk=author_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     return render(request, "authorCoast/show.html", {"author": author})
 
 
 # Vue pour ajouter un nouveau livre
+@user_passes_test(lambda u: u.is_superuser)
 def add(request):
     if request.method == "POST":
         form = AuthorForm(request.POST, request.FILES)
@@ -28,6 +31,7 @@ def add(request):
 
 
 # Vue pour modifier un livre existant
+@user_passes_test(lambda u: u.is_superuser)
 def edit(request, author_id):
     author = get_object_or_404(Author, pk=author_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
@@ -41,6 +45,7 @@ def edit(request, author_id):
 
 
 # Vue pour supprimer un livre existant
+@user_passes_test(lambda u: u.is_superuser)
 def remove(request, author_id):
     author = get_object_or_404(Author, pk=author_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":

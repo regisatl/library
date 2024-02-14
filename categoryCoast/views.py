@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from catalog.models import  Category
 from .forms import CategoryForm
@@ -10,12 +11,14 @@ def index(request):
 
 
 # Vue pour afficher une catégorie spécifique
+@login_required
 def show(request, category_id):
     category = get_object_or_404(Category, pk=category_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     return render(request, "categoryCoast/show.html", {"category": category})
 
 
 # Vue pour ajouter une nouvelle catégorie
+@user_passes_test(lambda u: u.is_superuser)
 def add(request):
     if request.method == "POST":
         form = CategoryForm(request.POST, request.FILES)
@@ -28,6 +31,7 @@ def add(request):
 
 
 # Vue pour modifier une catégorie existant
+@user_passes_test(lambda u: u.is_superuser)
 def edit(request, category_id):
     category = get_object_or_404(Category, pk=category_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
@@ -40,6 +44,7 @@ def edit(request, category_id):
     return render(request, "categoryCoast/edit.html", {"form": form})
 
 # Vue pour supprimer une catégorie existant
+@user_passes_test(lambda u: u.is_superuser)
 def remove(request, category_id):
     category = get_object_or_404(Category, pk=category_id)  # Récupère le livre ou renvoie une erreur 404 si non trouvé
     if request.method == "POST":
