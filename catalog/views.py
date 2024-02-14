@@ -7,8 +7,15 @@ from .forms import BookForm, BookSearchForm
 # Vue pour l'index
 def index(request):
     active_page = "home"
+    form = BookSearchForm(request.GET)
     books = Book.objects.all().order_by('-publish_date')  # Récupère tous les livres disponibles
-    return render(request, "catalog/index.html", {"books": books, 'active_page': active_page})
+    if form.is_valid():
+        search_query = form.cleaned_data.get('search_query')
+        if search_query:
+            books = books.filter(title__icontains=search_query) | \
+                books.filter(author__icontains=search_query) | \
+                books.filter(publish_date__icontains=search_query)                
+    return render(request, "catalog/index.html", {"books": books, 'active_page': active_page, 'form': form})
 
 
 # Vue pour afficher un livre spécifique
@@ -55,17 +62,3 @@ def remove(request, book_id):
         book.delete()
         return redirect("catalog:index")
     return render(request, "catalog/remove.html", {"book": book})
-
-def book_search(request):
-    form = BookSearchForm(request.GET)
-    books = Book.objects.all()
-
-    if form.is_valid():
-        search_query = form.cleaned_data.get('search_query')
-        if search_query:
-            books = books.filter(title__icontains=search_query) | \
-                books.filter(author__icontains=search_query) | \
-                books.filter(publish_date__icontains=search_query)
-        
-    context = {'books': books, 'form': form}
-    return render(request, 'catalog/search.html', context)

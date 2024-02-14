@@ -11,7 +11,6 @@ urlpatterns = [
     path('add/', views.add, name='add'),
     path('edit/<int:book_id>/', views.edit, name='edit'),
     path('remove/<int:book_id>/', views.remove, name='remove'),
-    path('search/', views.book_search, name='book_search'),
 ]
 
 if settings.DEBUG:
