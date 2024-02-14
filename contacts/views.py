@@ -4,6 +4,7 @@ from .forms import ContactForm
 
 
 def index(request):
+    active_page = 'contact'
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -17,4 +18,4 @@ def index(request):
     # Récupérer tous les contacts de la base de données
     contacts = Contact.objects.all()
 
-    return render(request, "contacts/index.html", {"form": form, "contacts": contacts})
+    return render(request, "contacts/index.html", {"form": form, "contacts": contacts, 'active_page': active_page})
