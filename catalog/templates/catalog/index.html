@@ -38,6 +38,7 @@
     </form>
   </div>
 
+  {% if user.is_superuser %}
   <div class="grid md:grid-cols-2 lg:grid-cols-3 px-4 gap-4 mt-8">
     <div class="flex items-center justify-between hover:bg-gradient-to-r from-indigo-300 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       <h5 class="text-xl font-bold tracking-tight text-gray-500 dark:text-gray-100 dark:text-white">Total de livre</h5>
@@ -52,6 +53,7 @@
       <p class="border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center font-bold text-gray-100 shadow-xl bg-indigo-500 dark:text-gray-400">{{num_books_status_0}}</p>
     </div>
   </div>
+  {% endif %}
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 px-4 gap-4">
     {% for book in books %}
