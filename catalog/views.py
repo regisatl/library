@@ -7,6 +7,15 @@ from .forms import BookForm, BookSearchForm
 # Vue pour l'index
 def index(request):
     active_page = "home"
+    # Compter le nombre total de livres
+    num_books = Book.objects.count()
+
+    # Compter le nombre de livres ayant le statut à 1
+    num_books_status_1 = Book.objects.filter(statut=True).count()
+
+    # Compter le nombre de livres ayant le statut à 0
+    num_books_status_0 = Book.objects.filter(statut=False).count()
+    
     form = BookSearchForm(request.GET)
     books = Book.objects.all().order_by('-publish_date')  # Récupère tous les livres disponibles
     if form.is_valid():
@@ -14,8 +23,9 @@ def index(request):
         if search_query:
             books = books.filter(title__icontains=search_query) | \
                 books.filter(author__icontains=search_query) | \
-                books.filter(publish_date__icontains=search_query)                
-    return render(request, "catalog/index.html", {"books": books, 'active_page': active_page, 'form': form})
+                books.filter(publish_date__icontains=search_query)    
+                            
+    return render(request, "catalog/index.html", {"books": books, 'active_page': active_page, 'form': form, 'num_books': num_books, 'num_books_status_1': num_books_status_1, 'num_books_status_0': num_books_status_0})
 
 
 # Vue pour afficher un livre spécifique
